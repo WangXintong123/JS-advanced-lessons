@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	// /*symbol 生成唯一值  基本数据类型*/
+	// let s1=Symbol("s1");
+	// let s2=Symbol("s2");
+	// let s3=Symbol("s1");
+	// console.log(s1==s3);
+
+
+	// /*symbol作为对象的属性名，永远不会重复
+	// 对象[symbol]{}
+	// {
+	// 	[symbol]:属性值
+	// }*/
+	// let obj={};
+	// obj[s1]="hello";
+	// obj.s1="444";//不行
+	// let obj1={
+	// 	[s1]:"world"
+	// }
+	// console.log(obj[s1]);
+
+
+	// /*symbol.for()首先查看是否存在该描述信息的symbol变量
+	// 	存在就直接获取，不存在就新建一个该描述信息的symbol变量*/
+	// let s=Symbol("foo");
+	// console.log(Symbol.for("foo")==Symbol.for("foo"));
+
+
+	// let s1=new Set([1,2,3,4,5,5,6,1,2,3,8]);
+	// console.log(s1);
+	// for(var i of s1){
+	// 	console.log(i);
+	// }
+
+
+	// let m1=new Map([["username","zhangsan"],
+	// 	["age",20],
+	// 	["sex","male"]]);
+	// console.log(m1.size);
+	// console.log(m1.keys());
+	// for(var i of m1){
+	//  	console.log(i);
+	//  }
+	//  for(var j of m1.keys()){
+	//  	console.log(j);
+	//  }
+	//  console.log(m1.set("a",22));
+	//  console.log(m1.get("a"));
+	//  console.log(m1.delete("username"));
+	//  console.log(m1.has("username"));
+
+
+
+
+
+	// class Point{
+	// 	constructor(){
+	// 		this.x=1;
+	// 		this.y=2;
+	// 	}
+	// 	show(){
+	// 		console.log(this.x,this.y);
+	// 	}
+	// 	static showy(){
+	// 		console.log(this);
+	// 	}
+	// }
+	// let p1=new Point();
+	// p1.show();
+	// console.log(typeof Point);
+	// let p2=new Point();
+	// console.log(p1.__proto__==p2.__proto__);
+	// /*使用static 方法（）{}来添加静态方法
+	// 静态方法通过类进行调用
+	// 静态方法内部的this指向类本身*/
+	// Point.showy();
+
+
+	/*继承的实现方式*/
+	// let obj1={"x":1};
+	// let obj2=Object.create(obj1);
+	// console.log(obj2.x);
+
+	// let obj3={"y":2};
+	// let obj4;
+	// obj4.__proto__=obj3;
+
+	// function fn1(){
+	// 	this.x=1;
+	// }
+	// fn1.prototype.show=function(){
+	// 	console.log(this.x);
+	// }
+	// let obj5=new fn1();
+
+
+	// function Parent(x,y){//构造函数的继承
+	// 	this.x=x;
+	// 	this.y=y;
+	// }
+	// function Child(x,y,z){
+	// 	Parent.call(this,x,y);
+	// 	this.z=z;
+	// }
+	// let p1=new Child(1,2,3);
+	// console.log(p1);
+
+
+	//类的继承
+	/*子类继承父类 extends
+	在类的构造函数里面，super指向父类的构造函数
+	继承的子类构造函数中，必须得在super的调用之后，才能使用this*/
+	class Parent{
+		constructor(x,y){
+			this.x=x;
+			this.y=y;
+		} 
+		parentShow(){
+			console.log(this);
+		}
+	}
+	class Child extends Parent{
+		constructor(x,y,z){
+			super(x,y);
+			this.z=z;
+		}
+		show(){
+			super.parentShow();//super在原型方法中指代父类构造函数的原型对象prototype
+			console.log(this.x,this.y,this.z);
+
+		}
+	}
+	let c1=new Child(1,2,3);
+	console.log(c1);
+	c1.show();
+</script>
+</html>
